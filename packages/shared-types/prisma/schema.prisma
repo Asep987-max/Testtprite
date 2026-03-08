@@ -1,0 +1,22 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Test {
+  id                  String   @id @default(uuid()) @db.Uuid
+  projectId           String   @map("project_id") @db.Uuid
+  name                String
+  authorId            String   @map("author_id") @db.Uuid
+  source              Json     // NLP input or recorded steps or code
+  createdAt           DateTime @default(now()) @map("created_at") @db.Timestamptz
+  lastRunAt           DateTime? @map("last_run_at") @db.Timestamptz
+  flakinessScore      Float?    @map("flakiness_score")
+  appliedAgentFixes   Json?     @map("applied_agent_fixes")
+
+  @@map("tests")
+}
