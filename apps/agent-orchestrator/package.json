@@ -1,0 +1,17 @@
+{
+  "name": "@testprite/agent-orchestrator",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/worker.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "@testprite/shared-types": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/amqplib": "^0.10.1"
+  }
+}

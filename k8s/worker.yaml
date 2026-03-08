@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playwright-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playwright-worker
+  template:
+    metadata:
+      labels:
+        app: playwright-worker
+    spec:
+      containers:
+        - name: playwright-worker
+          image: mcr.microsoft.com/playwright:v1.39.0-jammy
+          command: ["sleep", "infinity"]
+          env:
+            - name: NODE_ENV
+              value: production
